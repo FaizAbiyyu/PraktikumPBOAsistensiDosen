@@ -54,7 +54,7 @@ public class LoginAdmin_07293 extends ComponenGUI_07293 {
         bingkaigambar.setBounds(80, 70, 150, 150);
         add(bingkaigambar);
 
-        pathicon = "./src/Images/lolos.jpg";
+        pathicon = "./src/Images/tokopedia.png";
 
         try{
             bufferedImage = ImageIO.read(new File(pathicon));

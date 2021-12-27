@@ -36,26 +36,27 @@ public class Home_07293 extends ComponenGUI_07293 {
         btnBeli.setForeground(Color.white);
         add(btnBeli);
 
-        labelmasuk.setBounds(35,330,60,25);
+        labelmasuk.setText("Masuk Pembeli");
+        labelmasuk.setBounds(35,300,100,25);
         add(labelmasuk);
-        fieldmasuk.setBounds(130,330,130,25);
+        fieldmasuk.setBounds(130,300,130,25);
         add(fieldmasuk);
+
+        btnmasuk.setBounds(90, 350,130,25);
+        btnmasuk.setBorder(null);
+        btnmasuk.setBackground(Color.black);
+        btnmasuk.setForeground(Color.white);
+        add(btnmasuk);
 
         btnLogin.setBounds(0, 405, 20, 20);
         btnLogin.setBorder(null);
         btnLogin.setBackground(Color.black);
         add(btnLogin);
 
-        btnmasuk.setBounds(90, 375,130,25);
-        btnmasuk.setBorder(null);
-        btnmasuk.setBackground(Color.black);
-        btnmasuk.setForeground(Color.white);
-        add(btnmasuk);
-
         bingkaigambar.setBounds(80,70,150,150);
         add(bingkaigambar);
 
-        pathicon = "./src/images/m3.jpg";
+        pathicon = "./src/images/shoope.png";
 
         try{
             bufferedImage = ImageIO.read(new File(pathicon));
