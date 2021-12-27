@@ -53,8 +53,8 @@ public class ComponenGUI_07293 extends JFrame{
     protected JButton btnregist = new JButton("Registrasi");
     protected JButton btnmasuk = new JButton("Masuk");
     protected JButton btnchangepro = new JButton("Ubah Produk");
-    protected JButton btnchangenom = new JButton("Ubah Produk");
-    protected JButton btnchangehar = new JButton("Ubah Produk");
+    protected JButton btnchangenom = new JButton("Ubah Nominal");
+    protected JButton btnchangehar = new JButton("Ubah Harga");
 
 
     BufferedImage bufferedImage = null;

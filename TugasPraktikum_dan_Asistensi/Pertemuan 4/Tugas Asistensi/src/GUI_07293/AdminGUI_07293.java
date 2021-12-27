@@ -69,7 +69,7 @@ public class AdminGUI_07293 extends ComponenGUI_07293 {
         add(btnregist);
 
         btnProduk.setText("Show Produk");
-        btnProduk.setBounds(540,275,110,25);
+        btnProduk.setBounds(540,230,110,25);
         btnProduk.setFocusPainted(false);
         btnProduk.setBackground(Color.black);
         btnProduk.setForeground(Color.white);
