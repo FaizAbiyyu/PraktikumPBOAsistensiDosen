@@ -12,7 +12,6 @@ public class Beli_07293 extends ComponenGUI_07293 {
     JTable tabelproduk = new JTable();
     JScrollPane spprodul = new JScrollPane(tabelproduk);
     JTextField textpilih = new JTextField();
-    int kode;
 
     public Beli_07293(){
         initComponenGUI();

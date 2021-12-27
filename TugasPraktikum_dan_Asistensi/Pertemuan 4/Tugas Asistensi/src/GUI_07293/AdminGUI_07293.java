@@ -68,13 +68,6 @@ public class AdminGUI_07293 extends ComponenGUI_07293 {
         btnregist.setForeground(Color.white);
         add(btnregist);
 
-        btntbhproduk.setText("Tambah Produk");
-        btntbhproduk.setBounds(540,230,110,25);
-        btntbhproduk.setFocusPainted(false);
-        btntbhproduk.setBackground(Color.black);
-        btntbhproduk.setForeground(Color.white);
-        add(btntbhproduk);
-
         btnProduk.setText("Show Produk");
         btnProduk.setBounds(540,275,110,25);
         btnProduk.setFocusPainted(false);
@@ -87,16 +80,6 @@ public class AdminGUI_07293 extends ComponenGUI_07293 {
             public void mouseClicked(MouseEvent e){
                 int i = tabeltransaksi.getSelectedRow();
                 textpilih.setText(ObjectControllerGUI_07293.transaksiCon.daftartransaksi().getValueAt(i, 0).toString());
-            }
-        });
-
-        btnverif.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                kode = Integer.parseInt(textpilih.getText());
-                ObjectControllerGUI_07293.adminCon.ubahStatus(kode);
-                JOptionPane.showMessageDialog(null, "Berhasil Verifikasi");
-                tabeltransaksi.setModel(ObjectControllerGUI_07293.transaksiCon.daftartransaksi());
             }
         });
 
@@ -135,7 +118,6 @@ public class AdminGUI_07293 extends ComponenGUI_07293 {
             @Override
             public void actionPerformed(ActionEvent e){
                 Produk_07293 p = new Produk_07293();
-                dispose();
             }
         });
 
@@ -174,27 +156,6 @@ public class AdminGUI_07293 extends ComponenGUI_07293 {
                 JOptionPane.showMessageDialog(null, "Berhasil Verifikasi");
                 tabeltransaksi.setModel(ObjectControllerGUI_07293.transaksiCon.daftartransaksi());
 
-            }
-        });
-
-        btntbhproduk.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                try{
-                    String produk = JOptionPane.showInputDialog("Masukkan Produk");
-                    String nominalstr = JOptionPane.showInputDialog("Masukkan nominal");
-                    String hargastr = JOptionPane.showInputDialog("Masukkan Harga");
-                    if(produk.length() > 0 && nominalstr.length() > 0 && hargastr.length() > 0){
-                        int nominal = Integer.parseInt(nominalstr);
-                        int harga = Integer.parseInt(hargastr);
-                        ObjectControllerGUI_07293.transaksiCon.insertProduk(produk,nominal,harga);
-                        JOptionPane.showMessageDialog(null, "Berhasil Tambah Produk");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Data Kosong");
-                    }
-                } catch (Exception ex){
-                    JOptionPane.showMessageDialog(null, "Cancelled");
-                }
             }
         });
     }

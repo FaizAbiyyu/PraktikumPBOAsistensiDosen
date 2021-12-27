@@ -38,6 +38,34 @@ public class Produk_07293 extends ComponenGUI_07293 {
         btndelet.setForeground(Color.white);
         add(btndelet);
 
+        btnchangepro.setBounds(540,140,110,25);
+        btnchangepro.setFocusPainted(false);
+        btnchangepro.setBorder(null);
+        btnchangepro.setBackground(Color.black);
+        btnchangepro.setForeground(Color.white);
+        add(btnchangepro);
+
+        btnchangenom.setBounds(540,185,110,25);
+        btnchangenom.setFocusPainted(false);
+        btnchangenom.setBorder(null);
+        btnchangenom.setBackground(Color.black);
+        btnchangenom.setForeground(Color.white);
+        add(btnchangenom);
+
+        btnchangehar.setBounds(540,230,110,25);
+        btnchangehar.setFocusPainted(false);
+        btnchangehar.setBorder(null);
+        btnchangehar.setBackground(Color.black);
+        btnchangehar.setForeground(Color.white);
+        add(btnchangehar);
+
+        btntbhproduk.setText("Add Produk");
+        btntbhproduk.setBounds(540,275,110,25);
+        btntbhproduk.setFocusPainted(false);
+        btntbhproduk.setBackground(Color.black);
+        btntbhproduk.setForeground(Color.white);
+        add(btntbhproduk);
+
         btnback.setBounds(25, 20, 80, 25);
         btnback.setBackground(Color.white);
         btnback.setFocusPainted(false);
@@ -78,6 +106,86 @@ public class Produk_07293 extends ComponenGUI_07293 {
             @Override
             public void actionPerformed(ActionEvent e){
                 dispose();
+            }
+        });
+
+        btnchangepro.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String  id = JOptionPane.showInputDialog("Masukkan ID ");
+                    String inputpro = JOptionPane.showInputDialog("Masukan nama Produk Baru");
+                    if(id.length()> 0 && inputpro.length() > 0){
+                        int ids = Integer.parseInt(id);
+                        ObjectControllerGUI_07293.adminCon.updatepro( inputpro, ids);
+                        tabelproduk.setModel(ObjectControllerGUI_07293.transaksiCon.daftarproduk());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+        btnchangenom.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String  id = JOptionPane.showInputDialog("Masukkan ID ");
+                    String inputpro = JOptionPane.showInputDialog("Masukan Nominal Produk Baru");
+                    if(id.length()> 0 && inputpro.length() > 0){
+                        int ids = Integer.parseInt(id);
+                        int inputpors = Integer.parseInt(inputpro);
+                        ObjectControllerGUI_07293.adminCon.updatenom( inputpors, ids);
+                        tabelproduk.setModel(ObjectControllerGUI_07293.transaksiCon.daftarproduk());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+        btnchangehar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String  id = JOptionPane.showInputDialog("Masukkan ID ");
+                    String inputpro = JOptionPane.showInputDialog("Masukan nama Produk Baru");
+                    if(id.length()> 0 && inputpro.length() > 0){
+                        int ids = Integer.parseInt(id);
+                        int inputpros = Integer.parseInt(inputpro);
+                        ObjectControllerGUI_07293.adminCon.updatehar( inputpros, ids);
+                        tabelproduk.setModel(ObjectControllerGUI_07293.transaksiCon.daftarproduk());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+
+
+        btntbhproduk.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String produk = JOptionPane.showInputDialog("Masukkan Produk");
+                    String nominalstr = JOptionPane.showInputDialog("Masukkan nominal");
+                    String hargastr = JOptionPane.showInputDialog("Masukkan Harga");
+                    if(produk.length() > 0 && nominalstr.length() > 0 && hargastr.length() > 0){
+                        int nominal = Integer.parseInt(nominalstr);
+                        int harga = Integer.parseInt(hargastr);
+                        ObjectControllerGUI_07293.transaksiCon.insertProduk(produk,nominal,harga);
+                        JOptionPane.showMessageDialog(null, "Berhasil Tambah Produk");
+                        tabelproduk.setModel(ObjectControllerGUI_07293.transaksiCon.daftarproduk());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
             }
         });
     }

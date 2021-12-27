@@ -205,9 +205,10 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
         return arrayList;
     }
 
+    //update
     public void updateNamaPembeli(String nama, int nomortrx){
         try {
-            sql = "update transaksi SET nama =? WHERE nomortrx = ?";
+            sql = "update transaksi SET nama =? WHERE idGame = ?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nama);
             stat.setInt(2,nomortrx);
@@ -220,7 +221,7 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
 
     public void updateNoPembeli(String notlp, int nomortrx){
         try {
-            sql = "update transaksi SET notelp=? WHERE nomortrx=?";
+            sql = "update transaksi SET notelp=? WHERE idGame=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, notlp);
             stat.setInt(2, nomortrx);
@@ -233,7 +234,7 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
 
     public void updateidGame(String idgame, int nomortrx){
         try {
-            sql = "update transaksi SET idGame =? WHERE nomortrx = ?";
+            sql = "update transaksi SET idGame =? WHERE idGame = ?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1,idgame);
             stat.setInt(2,nomortrx);
@@ -246,7 +247,7 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
 
     public void updatenamaAkun(String akun, int nomortrx){
         try {
-            sql = "update transaksi SET namaAkun =? WHERE nomortrx=?";
+            sql = "update transaksi SET namaAkun =? WHERE idGame=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1,akun);
             stat.setInt(2,nomortrx);
@@ -257,9 +258,20 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
         }
     }
 
+    public void updateproduk(String produk, int nomortrx){
+        try {
+            sql = "update transaksi set produk = ? WHERE idGame =?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,produk);
+            stmt.setInt(2,nomortrx);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public void updateNominal(int nominal, int nomortrx){
         try {
-            sql = "UPDATE produk SET nominal =? WHERE nomortrx = ?";
+            sql = "update transaksi SET nominal =? WHERE idGame = ?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setInt(1,nominal);
             stat.setInt(2, nomortrx);
@@ -271,7 +283,7 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
 
     public void updateharga(int harga, int nomortrx){
         try {
-            sql = "UPDATE produk SET harga =? WHERE nomortrx=?";
+            sql = "update transaksi SET harga =? WHERE idGame =?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setInt(1,harga);
             stat.setInt(2,nomortrx);
@@ -280,14 +292,5 @@ public class TransaksiModel_07293 extends ModelAbstrack_07293 {
         }
     }
 
-    public void updateproduk(String produk, int nomortrx){
-        try {
-            sql = "UPDATE produk set produk = ? WHERE nomortrx=?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1,produk);
-            stmt.setInt(2,nomortrx);
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
+
 }

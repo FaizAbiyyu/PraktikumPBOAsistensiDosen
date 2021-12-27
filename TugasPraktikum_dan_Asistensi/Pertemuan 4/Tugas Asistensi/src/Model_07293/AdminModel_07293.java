@@ -89,4 +89,42 @@ public class AdminModel_07293 extends ModelAbstrack_07293 {
             e.printStackTrace();
         }
     }
+
+    public void updatepro(String pro, int id){
+        try{
+            sql ="UPDATE produk SET produk = ? WHERE id=?";
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1,pro);
+            stat.setInt(2,id);
+            stat.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("GAGAL RUBAH DATA");
+            e.printStackTrace();
+        }
+    }
+    public void updatenom(int nom, int id){
+        try{
+            sql ="UPDATE produk SET nominal = ? WHERE id=?";
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setInt(1,nom);
+            stat.setInt(2,id);
+            stat.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("GAGAL RUBAH DATA");
+            e.printStackTrace();
+        }
+    }
+
+    public void updatehar(int har, int id){
+        try{
+            sql ="UPDATE produk SET harga = ? WHERE id=?";
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setInt(1,har);
+            stat.setInt(2,id);
+            stat.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("GAGAL RUBAH DATA");
+            e.printStackTrace();
+        }
+    }
 }

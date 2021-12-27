@@ -13,6 +13,8 @@ public class TransaksiGUI_07293 extends ComponenGUI_07293 {
     int status;
     int  nominal, harga;
     String nama, ign, produk, notelp, akun;
+    JTable tabelproduk = new JTable();
+    JScrollPane spprodul = new JScrollPane(tabelproduk);
 
     public TransaksiGUI_07293(int cek){
         initComponent(cek);
@@ -34,11 +36,15 @@ public class TransaksiGUI_07293 extends ComponenGUI_07293 {
         setTitle("PROGRAM Ubah Data");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(380,480);
+        setSize(900,480);
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
+
+        spprodul.setBounds(20, 50, 500, 350);
+        tabelproduk.setModel(ObjectControllerGUI_07293.transaksiCon.daftarproduk());
+        add(spprodul);
 
         btnback.setBounds(25, 20, 80, 25);
         btnback.setBackground(Color.white);
@@ -46,62 +52,62 @@ public class TransaksiGUI_07293 extends ComponenGUI_07293 {
         btnback.setBorder(null);
         add(btnback);
 
-        labelnama.setBounds(25, 50, 40, 25);
+        labelnama.setBounds(525, 50, 40, 25);
         add(labelnama);
-        fieldnama.setBounds(120, 50, 100, 25);
+        fieldnama.setBounds(620, 50, 100, 25);
         fieldnama.setText(nama);
         fieldnama.setEditable(false);
         add(fieldnama);
 
-        labelnotlp.setBounds(25, 90, 40, 25);
+        labelnotlp.setBounds(525, 90, 40, 25);
         add(labelnotlp);
-        fieldnotelp.setBounds(120, 90, 100, 25);
+        fieldnotelp.setBounds(620, 90, 100, 25);
         fieldnotelp.setText(notelp);
         fieldnotelp.setEditable(false);
         add(fieldnotelp);
 
-        labelign.setBounds(25, 135, 40, 25);
+        labelign.setBounds(525, 135, 40, 25);
         add(labelign);
-        fieldign.setBounds(120, 135, 100, 25);
+        fieldign.setBounds(620, 135, 100, 25);
         fieldign.setText(ign);
         fieldign.setEditable(false);
         add(fieldign);
 
-        labelakun.setBounds(25, 180, 80, 25);
+        labelakun.setBounds(525, 180, 80, 25);
         add(labelakun);
-        fieldakun.setBounds(120, 180, 100, 25);
+        fieldakun.setBounds(620, 180, 100, 25);
         fieldakun.setText(akun);
         fieldakun.setEditable(false);
         add(fieldakun);
 
-        labelproduk.setBounds(25,225,80,25);
+        labelproduk.setBounds(525,225,80,25);
         add(labelproduk);
-        fieldproduk.setBounds(120,225,100,25);
+        fieldproduk.setBounds(620,225,100,25);
         fieldproduk.setText(produk);
         fieldproduk.setEditable(false);
         add(fieldproduk);
 
-        labelnominal.setBounds(25,270,80,25);
+        labelnominal.setBounds(525,270,80,25);
         add(labelnominal);
-        fieldnominal.setBounds(120,270,100,25);
+        fieldnominal.setBounds(620,270,100,25);
         fieldnominal.setText(String.valueOf(nominal));
         fieldnominal.setEditable(false);
         add(fieldnominal);
 
-        labelharga.setBounds(25,315,80,25);
+        labelharga.setBounds(525,315,80,25);
         add(labelharga);
-        fieldharga.setBounds(120,315,100,25);
+        fieldharga.setBounds(620,315,100,25);
         fieldharga.setText(String.valueOf(harga));
         fieldharga.setEditable(false);
         add(fieldharga);
 
-        btnubahnama.setBounds(245, 50, 80, 25);
-        btnubahnotelp.setBounds(245, 90, 80, 25);
-        btnubahign.setBounds(245, 135, 80, 25);
-        btnubahakun.setBounds(245, 180, 80, 25);
-        btnubahproduk.setBounds(245, 225, 80, 25);
-        btnubahnominal.setBounds(245,270,80,25);
-        btnubahharga.setBounds(245,315,80,25);
+        btnubahnama.setBounds(745, 50, 80, 25);
+        btnubahnotelp.setBounds(745, 90, 80, 25);
+        btnubahign.setBounds(745, 135, 80, 25);
+        btnubahakun.setBounds(745, 180, 80, 25);
+        btnubahproduk.setBounds(745, 225, 80, 25);
+        btnubahnominal.setBounds(745,270,80,25);
+        btnubahharga.setBounds(745,315,80,25);
 
         add(btnubahnama);
         add(btnubahnotelp);
@@ -190,7 +196,60 @@ public class TransaksiGUI_07293 extends ComponenGUI_07293 {
                     String inputNoTelp = JOptionPane.showInputDialog("Masukan namaAkun Baru");
                     if(inputNoTelp.length() > 0){
                         ObjectControllerGUI_07293.adminCon.updatenamaAkun( inputNoTelp, cek);
-                        fieldnotelp.setText(inputNoTelp);
+                        fieldakun.setText(inputNoTelp);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+
+        btnubahproduk.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String inputpro = JOptionPane.showInputDialog("Masukan nama Produk Baru");
+                    if(inputpro.length() > 0){
+                        ObjectControllerGUI_07293.adminCon.updateProduk( inputpro, cek);
+                        fieldproduk.setText(inputpro);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+
+        btnubahnominal.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String inputpass = JOptionPane.showInputDialog("Masukan nominal Produk Baru");
+                    if(inputpass.length() > 0){
+                        int input = Integer.parseInt(inputpass);
+                        ObjectControllerGUI_07293.adminCon.updateNominal( input, cek);
+                        fieldnominal.setText(inputpass);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data Kosong");
+                    }
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Cancelled");
+                }
+            }
+        });
+
+        btnubahharga.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    String inputpass = JOptionPane.showInputDialog("Masukan harga Produk Baru");
+                    if(inputpass.length() > 0){
+                        int input = Integer.parseInt(inputpass);
+                        ObjectControllerGUI_07293.adminCon.updateHarga( input, cek);
+                        fieldharga.setText(inputpass);
                     } else {
                         JOptionPane.showMessageDialog(null, "Data Kosong");
                     }
