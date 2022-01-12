@@ -1,19 +1,14 @@
 package Model_07293;
 
 import Entity_07293.MahasiswaEntity_07293;
-import Helper.KoneksiDb_07293;
 
-import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MahasiswaModel_07293 extends ModelAbstrack{
     private String sql;
-    //public KelasEntitiy_07293 kelas = new KelasEntitiy_07293();
-//    ArrayList<MahasiswaEntity_07293> mahasiswa = new ArrayList<>();
-//    MahasiswaEntity_07293 biodataEntity = new MahasiswaEntity_07293();
-//    public MahasiswaModel_07293(){}
+
 
     public void insertBiodata(MahasiswaEntity_07293 mahasiswa){
         try {
@@ -133,16 +128,6 @@ public class MahasiswaModel_07293 extends ModelAbstrack{
         return arraylistMahasiswa_07293; //mengembalikan kumpulandata yg  didpt kedlm arraylistMhs
     }
 
-//    public String pilihKelas (int pil){
-//        ArrayList<String> temp = kelas.daftarKelas();
-//        String kelas = null;
-//        if(pil > temp.size()){
-//            System.out.println("Input diluar batas");
-//        }else {
-//            kelas = temp.get(pil);
-//        }
-//        return kelas;
-//    }
 
     public void updateData(int id){
         Scanner input = new Scanner(System.in);
